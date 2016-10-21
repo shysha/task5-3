@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>排列数组</title>
+</head>
+
+<body>
+    <script>
+    //找出数组中出现次数最多的元素及出现的次数和位置
+    //新数组arr
+    var arr = new Array("a", "x", "b", "d", "m", "a", "k", "m", "p", "j", "a");
+    var count = {}; //记录元素出现的次数
+    var position = {}; //记录元素所在位置
+    for (var i = 0; i < arr.length; i++) {
+        if (!count[arr[i]]) { //不在count中重复出现的字母执行
+            count[arr[i]] = 1;
+            position[arr[i]] = i;
+        } else { //重复出现的字母执行
+            count[arr[i]]++;
+            position[arr[i]] += "," + i;
+        }
+        console.log(count[arr[i]]); //count中的属性（出现的次数）
+        console.log(position[arr[i]]); //position 的属性
+    }
+    var max = 0;
+    var element; //element为出现次数最多的字母
+    //    遍历count中每个属性的值并与max作比较，较大的赋值element
+    for (var i in count) {
+        if (count[i] > max) {
+            max = count[i];
+            element = i;
+        }
+    }
+    console.log("出现最多的字母是:" + element + "；其个数为:" + count[element] + "；每一个所在的顺序为:" + position[element]);
+    document.write("数组[" + arr + "]中出现最多的字母是:" + element + "；其个数为:" + count[element] + "；每一个所在的顺序为:" + position[element]);
+    </script>
+</body>
+
+</html>
